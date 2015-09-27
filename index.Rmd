@@ -1,0 +1,63 @@
+---
+title       : Predicting Wine Prices
+subtitle    : Data Analysis as the New Wine Expert !
+author      : Metin Turgal
+job         : 
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+---
+
+## Statistics vs. Wine Expert 
+
+1. Orley Ashenfelter, a Princeton economics professor, shows that a statistical analysis can outperform wine experts on predicting quality wine.
+2. He has used linear regression with the following features to predict the price 
+ + Age (older wines are more expensive)
+ + Average Growing Season Temperature
+ + Harvest Rain
+ + Winter Rain
+3. The same method and the data is used for our prediction tool, "Wine Price Prediction" website 
+
+---
+## The Model
++ The variables on which the prediction is based on are statistically powerful predictors,as shown below:
+```{r echo=FALSE}
+wine <- read.csv("C:/Users/mturgal/Documents/KISISEL/PROGRAMCILIK/Data Science/9_Developing Data Products/wine.csv")
+```
+
+```{r}
+
+summary(lm(Price~AGST+HarvestRain+ WinterRain+Age,data=wine))
+
+```
+
+---
+## Model Variables vs. Wine Price
+
+```{r echo=FALSE}
+par (mfrow= c (2,2))
+plot(Price~Age,data=wine, xlab="Age of Wine (Years)",pch=16)
+abline(lm(Price~Age,data=wine))
+plot(Price~AGST,data=wine, xlab="Avg Growing Season Temp(Celsius)",pch=16)
+abline(lm(Price~AGST,data=wine))
+plot(Price~HarvestRain,data=wine, xlab="Harvest Rain(mm)",pch=16)
+abline(lm(Price~HarvestRain,data=wine))
+plot(Price~WinterRain,data=wine, xlab="Winter Rain(mm)",pch=16)
+abline(lm(Price~WinterRain,data=wine))
+
+```
+
+---
+
+## Why Should You Consider It ?
+
+1. It's cheaper than hiring a wine expert.
+2. It's convenient : Even from your mobile device you can get a prediction. 
+3. It's fast: It doesn't need a time a preliminary research. It is already done ! 
+4. Simple and straightforward 
+ + It doesn't need any prior knowledge, it can be used easily by anybody.
+ 
+
